@@ -50,7 +50,7 @@ _______
 
 - This is for your specific `app_id` for the Facebook developer app you created (`386585613295040`) and the specific callback HTTPS URL you specified (with a trailing slash I think and for testing purposes you don't need to actually setup SSL to confirm the oauth authorization functionality, https://localhost:3000/)
 
-    - **localhost docker app for callback url** --> https://instagram.com/oauth/authorize?client_id=386585613295040&redirect_uri=https://localhost:3000/&scope=user_profile,user_media&response_type=code
+    - 👉 **Refresh - localhost docker app for callback url** --> https://instagram.com/oauth/authorize?client_id=386585613295040&redirect_uri=https://localhost:3000/&scope=user_profile,user_media&response_type=code
 
         - Nice! this actually shows the oauth for my logged in **instagram tester account** in my browser!
 
@@ -58,7 +58,7 @@ _______
 
     - If you click to accept and **Allow**, the redirection obviously fails for SSL but if you click again for HTTP, it just loads but GETS the `code=` included, remove trailing `#_`  at:
         - http://localhost:3000/?code=AQCS5X_wXts8_1zfAgPtoEV_5Jb1vD1Wo7x7fI.............ytbb9fHHHwb07oMR3F47uwTWjKoeVjZKydOKEjWx-FbPrw#_
-        > The token expires after 1 hour, click the URL again to get a new one. Careful not to share as it does provide temporary access to the instagram tester account
+        > The token expires after 1 hour, click the URL again to get a new one. Careful not to share as it does provide temporary access to the instagram tester account, it will say "you previous connected...."
 
 
 _________
@@ -80,6 +80,7 @@ _________
     -F redirect_uri=https://localhost:3000/ \
     -F code=AQCS5X_wXts8_1zfAgPtoEV_5Jb1vD1Wo7x7fIZKtjzhT0YrFuo-0WF.....................ic4TUF3ytbb9fHHHwb07oMR3F47uwTWjKoeVjZKydOKEjWx-FbPrw
     ```
+    
 
     - this returns a json encoded object such as `access_token` & `user_id`
     
@@ -111,10 +112,53 @@ ________
         ```
 __________
 
+### Querying user media
+
+- There are examples for the Media on the Meta official guide here: https://developers.facebook.com/docs/instagram-basic-display-api/guides/getting-profiles-and-media#get-a-user-s-media
+
+- run the following (remember you may need to re-allow)
+
+    ```bash
+    $ curl -X GET \
+        'https://graph.instagram.com/me/media?fields=id,caption&access_token=IGQVJYOFE1dHdtcTJUN25XbHRGM2hFYjRnRzVCZAXJ2dV9XeXpweDgzbll6WHJ6Q1..........b2sxV1FWTGh4YWswMXlJS0NJYWZAYcHlv'
+    ```
+    - this returns a json encoded object for the User's media posts (my tester account only has one user!)
+
+        ```json
+        {"data":[{"id":"18110789671048314","caption":"THIS IS A TEST CAPTION! \ud83e\udde0\ud83e\udde0\ud83e\udde0"}],"paging":{"cursors":{"before":"QVFIUkdvVHo3SUM2aUxwcjJkWGpmLTBhTU43aVRHMVFKNG5DSFJrWTRTOHd5enRLd0dpTG5ZAV3plM3pfcGJkOU5KMDdXcFpUYjlEVXR6ZAHV1bzJRWXdXT1Bn","after":"QVFIUkdvVHo3SUM2aUxwcjJkWGpmLTBhTU43aVRHMVFKNG5DSFJrWTRTOHd5enRLd0dpTG5ZAV3plM3pfcGJkOU5KMDdXcFpUYjlEVXR6ZAHV1bzJRWXdXT1Bn"}}}
+        ``` 
+        - There are media fields
+
+### Query a specific edge node for Media ID
+
+- run the following to get the media info using the `media_id` returned above
+
+    - media fields here: https://developers.facebook.com/docs/instagram-basic-display-api/reference/media#fields
+
+    ```bash
+    $ curl -X GET \
+    'https://graph.instagram.com/18110789671048314?fields=id,media_type,media_url,permalink,username,timestamp&access_token=IGQVJYOFE1dHdtcTJUN25XbHRGM2hFYjRnRzVCZAXJ2dV9XeXpweDgzbll6WHJ6Q1BFdk....WTGh4YWswMXlJS0NJYWZAYcHlv'
+    ```
+
+    - This gets the media post information:
+
+        ```json
+        {"id":"18110789671048314","media_type":"IMAGE","media_url":"https:\/\/scontent-iad3-1.cdninstagram.com\/v\/t51.2885-15\/74920846_699184833934985_7840966360268957757_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=8ae9d6&_nc_ohc=727P9naTckIAX_7VcQJ&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=ANQ71j8EAAAA&oh=00_AT9ycctTcMd_Wxtx-JLrG-fP7j0yVHrW-rDfUAmYDbxJHw&oe=6239EEE2","permalink":"https:\/\/www.instagram.com\/p\/B38VAzjgn2a\/","username":"ascdev3620","timestamp":"2019-10-23T01:40:58+0000"}
+        ```
+
+        - we now have a `permalink` for the image post, this is https://www.instagram.com/p/B38VAzjgn2a/
+        - the `media_url` is different, needs to be properly formatted to get the image, change `\/` to `/` and this works on Instagram CDN:
+            ![](https://scontent-iad3-1.cdninstagram.com/v/t51.2885-15/74920846_699184833934985_7840966360268957757_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=8ae9d6&_nc_ohc=727P9naTckIAX_7VcQJ&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=ANQ71j8EAAAA&oh=00_AT9ycctTcMd_Wxtx-JLrG-fP7j0yVHrW-rDfUAmYDbxJHw&oe=6239EEE2)
+            > We can do whatever with the image, like save locally, save in mongodb, run AWS rekognition for image detection, post in a timeline, try and setup some mindfullness app for positive photos from your peers, etc.. 
+
+______
+
+
 ### NEXT STEPS
 
-- See step 2 of the medium tutorial
-- try the media node instead of just user node
+- See step 2 of the medium tutorial for loading images as feed on your website...
+- get @mbod as a instagram tester
+- incorporate more than one IG testing user feed into some kind of react web app feed
 - figure out how to store the returned api info into the MongoDB backend on docker-compose, to have persistent data? we want to collect image urls I think for now
 - figure out how to update the nodejs express frontend for react web app to display the returned IG data... 
 
