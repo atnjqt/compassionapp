@@ -1,4 +1,8 @@
 ## Compose sample application
+
+> **CLONED BY ETIENNE J FROM MEDIUM.COM ARTICLE FOR TEST & DEV... 03/19/2022
+> - Updated for [frontend-insta/](./frontend-insta/) vs [frontend](./frontend)
+
 ### React application with a NodeJS backend and a MongoDB database
 
 Project structure:

@@ -1,19 +1,18 @@
 services:
-  frontend:
-    build: frontend
+  frontend-insta:
+    container_name: frontend-insta
+    restart: always
+    build: frontend-insta
+    volumes:
+      - ./frontend-insta:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - react-express
     ports:
       - 3000:3000
     stdin_open: true
-    volumes:
-      - ./frontend:/usr/src/app
-      - /usr/src/app/node_modules
-    container_name: frontend
-    restart: always
-    networks:
-      - react-express
-    depends_on:
-      - backend
-
   backend:
     container_name: backend
     restart: always
