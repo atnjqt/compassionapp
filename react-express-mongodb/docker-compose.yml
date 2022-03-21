@@ -7,26 +7,28 @@ services:
       - ./frontend-insta:/usr/src/app
       - /usr/src/app/node_modules
     depends_on:
-      - backend
+      - backend-flask
     networks:
-      - react-express
+      - react-flask
     ports:
       - 3000:3000
     stdin_open: true
-  backend:
-    container_name: backend
+
+  backend-flask:
+    container_name: backend-flask
     restart: always
-    build: backend
+    build: backend-flask
     volumes:
-      - ./backend:/usr/src/app
+      - ./backend-flask:/usr/src/app
       - /usr/src/app/node_modules
     depends_on:
       - mongo
     networks:
-      - express-mongo
-      - react-express
+      - flask-mongo
+      - react-flask
     expose: 
       - 3000
+
   mongo:
     container_name: mongo
     restart: always
@@ -34,9 +36,9 @@ services:
     volumes:
       - ./data:/data/db
     networks:
-      - express-mongo
+      - flask-mongo
     expose:
       - 27017
 networks:
-  react-express:
-  express-mongo:
+  react-flask:
+  flask-mongo:
