@@ -179,6 +179,13 @@ ______
 
     ![](./img/instafeed_react_example.png)
 
+#### Testing for simple Flask app for HTTP arguments on GET & POST
+
+- **We are pythonista so why not use Flask as the backend?**  This is the server, or api, for our app and is at http://0.0.0.0:8080/ (a counter for how many times the site has been visited, writing to mongo)
+    - Using PyMongo we also have argument example for writing to db, http://0.0.0.0:8080/instagram/?ig_username=ascdev3620 to pass an `ig_username`
+    - based on the React Flast MongoDB boilerplate example here: https://github.com/jtcarse/react-flask-mongo
+
+- We can then use the request for cURL to query the API, maybe based on values inputted to the react client, and written to DB, all possible easily in python
 
 __________
 
@@ -188,9 +195,9 @@ __________
     - We want to collect image urls I think or does this only get processed on accessing & allowing?
     - In my ML class we talked about [GDRP Article 25](https://gdpr-info.eu/art-25-gdpr/) in reference to *Data protection by design and by default* and specifically principlpes like **data minimisation**! 
 
-- Update the nodejs express frontend for react web app to display the returned IG data... 
+- Further testing for Flask Backend, http GET & POST for using PyMongo
 
-- Do we want a backend of Flask or Express? I am more comfortable of course with Python than JavaScript?
+- Rename all directories for cleaning up repo
 
 - Simple LetsEncrypt SSL for redirection for https:localhost (helpful for testing the following item)
 

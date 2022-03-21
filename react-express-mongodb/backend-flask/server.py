@@ -1,35 +1,28 @@
-# example from https://dev.to/kouul/frmp-stack-5g9
-from flask import Flask, redirect, url_for
+from flask import Flask, jsonify, request
+from flask_cors import cross_origin
 from pymongo import MongoClient
-from flask_cors import CORS, cross_origin
-import json
+from datetime import datetime
 
-# set your Flask app
 app = Flask(__name__)
-cors = CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
+client = MongoClient('mongo', 27017)
+db = client.db
 
-#mongodb://mongo:27017
-mongoClient = MongoClient('mongodb://127.0.0.1:27017')
+@app.route('/', methods=['GET'])
+@cross_origin()
+def root():
+	db.hits.insert_one({ 'time': datetime.utcnow() })
+	message = 'This page has been visited {} times.'.format(db.hits.count_documents({}))
+	return jsonify({ 'message': message })
 
-# set DB name here
-db = mongoClient.get_database('instagram_testers_db')
-names_col = db.get_collection('names_col')
+# Add your backend API functions here... such as, add an Instagram username, access token, later add photos, etc...
+@app.route('/instagram/', methods=['GET','POST'])
+@cross_origin()
+def instagram_user():
+    ig_username = request.args.get('ig_username')
+    db.instagram.insert_one({ 'instagram_username': ''.format(ig_username) })
+    message = 'Inserted IG username {} into db...'.format(db.instagram.find({ 'instagram_username': ''.format(ig_username) }))
+    return jsonify({ 'message': message })
 
-# some steps here for adding values to mongo db collection
-@app.route('/addname/<name>/')
-def addname(name):
-    names_col.insert_one({"name": name.lower()})
-    return redirect(url_for('getnames'))
-
-@app.route('/getnames/')
-def getnames():
-    names_json = []
-    if names_col.find({}):
-        for name in names_col.find({}).sort("name"):
-            names_json.append({"name": name['name'], "id": str(name['_id'])})
-    return json.dumps(names_json)
-
-if __name__ == "__main__":
-    # defaults to 5000 for debug, we want 3000 for the callback url though
-    app.run(host='0.0.0.0', port=3000, debug=True)
+if __name__ == '__main__':
+	# only used locally
+	app.run(host='0.0.0.0', port=8080, debug=True)

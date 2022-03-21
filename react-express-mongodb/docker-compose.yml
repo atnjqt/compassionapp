@@ -26,6 +26,8 @@ services:
     networks:
       - flask-mongo
       - react-flask
+    ports:
+      - "8080:8080"
     expose: 
       - 3000
 
