@@ -34,7 +34,7 @@ ______
 - Run locally:
 
     ```bash
-    cd react-express-mongodb
+    cd react-flask-mongodb
 
     mkdir data # for volume mounted bind
 
@@ -91,7 +91,7 @@ _________
 
 #### (OPTIONAL) Get a long term access token
 
-- A long term access token lasts for 60 days, and is helpful if you want to include in the example instafeed app in Docker [react-express-mongodb/frontend-insta/](./react-express-mongodb/frontend-insta/) based on the template from part 2 on Github here: [https://github.com/MingSheng92/react_isntafeed](https://github.com/MingSheng92/react_isntafeed)
+- A long term access token lasts for 60 days, and is helpful if you want to include in the example instafeed app in Docker [react-flask-mongodb/frontend-insta/](./react-flask-mongodb/frontend-insta/) based on the template from part 2 on Github here: [https://github.com/MingSheng92/react_isntafeed](https://github.com/MingSheng92/react_isntafeed)
 
 - Run the following using the previous `access_token` returned 
 
@@ -101,7 +101,7 @@ _________
 
     - The `access_token` that is returned is your long ter 60 days! Keep this safe as it provides basic API access for your tester account! Should also have `,"token_type":"bearer","expires_in":5183986}`
 
-> Note: you can save the long term bearer_token to your .env file configuration I think? [react-express-mongodb/frontend-insta/.env](./react-express-mongodb/frontend-insta/.env)
+> Note: you can save the long term bearer_token to your .env file configuration I think? [react-flask-mongodb/frontend-insta/.env](./react-flask-mongodb/frontend-insta/.env)
 ________
 
 ### Query the User Node
@@ -166,7 +166,7 @@ ______
 
 ### Incorporating the React Instafeed example from Medium Part 2.
 
-- I cloned the repo and renamed as **react-express-mongodb/frontend-insta**, edited the docker-compose to reflect the new frontend container name...
+- I cloned the repo and renamed as **react-flask-mongodb/frontend-insta**, edited the docker-compose to reflect the new frontend container name...
 
 - Get a shoet term / long term access token and save in `.env` for frontend-insta and docker compose build... 
 
@@ -196,8 +196,6 @@ __________
     - In my ML class we talked about [GDRP Article 25](https://gdpr-info.eu/art-25-gdpr/) in reference to *Data protection by design and by default* and specifically principlpes like **data minimisation**! 
 
 - Further testing for Flask Backend, http GET & POST for using PyMongo
-
-- Rename all directories for cleaning up repo
 
 - Simple LetsEncrypt SSL for redirection for https:localhost (helpful for testing the following item)
 

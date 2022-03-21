@@ -1,25 +1,25 @@
 services:
-  frontend-insta:
-    container_name: frontend-insta
+  frontend:
+    container_name: frontend
     restart: always
-    build: frontend-insta
+    build: frontend
     volumes:
-      - ./frontend-insta:/usr/src/app
+      - ./frontend:/usr/src/app
       - /usr/src/app/node_modules
     depends_on:
-      - backend-flask
+      - backend
     networks:
       - react-flask
     ports:
       - 3000:3000
     stdin_open: true
 
-  backend-flask:
-    container_name: backend-flask
+  backend:
+    container_name: backend
     restart: always
-    build: backend-flask
+    build: backend
     volumes:
-      - ./backend-flask:/usr/src/app
+      - ./backend:/usr/src/app
       - /usr/src/app/node_modules
     depends_on:
       - mongo
