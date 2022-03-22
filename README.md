@@ -179,7 +179,14 @@ ______
 
     ![](./img/instafeed_react_example.png)
 
-#### Testing for simple Flask app for HTTP arguments on GET & POST
+#### Updating the application
+
+- I have added some stuff for `react-dom` to server over localhost:3000/welcome, /instafeed/ /oauth for redirect, etc... 
+this should work with letsencrypt for the redirection from instagram? that should solve a large part of the first ask of getting a user to interact and allow access.. from there we can figure the mongo stuff! 
+
+___________
+
+### Testing for simple Flask app for HTTP arguments on GET & POST
 
 - **We are pythonista so why not use Flask as the backend?**  This is the server, or api, for our app and is at http://0.0.0.0:8080/ (a counter for how many times the site has been visited, writing to mongo)
     - Using PyMongo we also have argument example for writing to db, http://0.0.0.0:8080/instagram/?ig_username=ascdev3620 to pass an `ig_username`
