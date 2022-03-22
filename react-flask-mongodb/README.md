@@ -3,6 +3,14 @@
 > **CLONED BY ETIENNE J FROM MEDIUM.COM ARTICLE FOR TEST & DEV... 03/19/2022
 > - Updated for [frontend-insta/](./frontend-insta/) vs [frontend](./frontend)
 
+
+### Updating Security Dependencies in these random repos I am using...
+
+- Using `--package-lock-only` for our `npm install` commands, given our development environment really is in the Docker container ... careful not to install locally
+  - also went and donwloaded the newer npm for MacOSX here, but there is strong recommendation to use a version manager... We are using Docker for the dev so I am not as concerned
+
+____________
+
 ### React application with a NodeJS backend and a MongoDB database
 
 Project structure:
