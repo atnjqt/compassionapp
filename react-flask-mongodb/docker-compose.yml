@@ -1,0 +1,46 @@
+services:
+  frontend:
+    container_name: frontend
+    restart: always
+    build: frontend
+    volumes:
+      - ./frontend:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - react-flask
+    ports:
+      - 3000:3000
+    stdin_open: true
+
+  backend:
+    container_name: backend
+    restart: always
+    build: backend
+    volumes:
+      - ./backend:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - mongo
+    networks:
+      - flask-mongo
+      - react-flask
+    ports:
+      - "8080:8080"
+    expose: 
+      - 3000
+
+  mongo:
+    container_name: mongo
+    restart: always
+    image: mongo:4.2.0
+    volumes:
+      - ./data:/data/db
+    networks:
+      - flask-mongo
+    expose:
+      - 27017
+networks:
+  react-flask:
+  flask-mongo:
