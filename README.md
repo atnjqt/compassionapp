@@ -1,6 +1,6 @@
 # Sample Web App for Instagram Basic API (Mindfullness Project Dev)
 
-- Author: [Etienne Jacquot](mailto:etiennej@upenn.edu) 03/17/2022
+- Author: [Etienne Jacquot](mailto:etiennej@upenn.edu) 03/21/2022
 
 ## Getting Started
 
