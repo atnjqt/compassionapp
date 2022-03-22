@@ -1,17 +1,11 @@
-## Compose sample application
+## React-Flask-MongoDB + Docker Compose sample application
 
-> **CLONED BY ETIENNE J FROM MEDIUM.COM ARTICLE FOR TEST & DEV... 03/19/2022
-> - Updated for [frontend-insta/](./frontend-insta/) vs [frontend](./frontend)
-
-
-### Updating Security Dependencies in these random repos I am using...
-
-- Using `--package-lock-only` for our `npm install` commands, given our development environment really is in the Docker container ... careful not to install locally
-  - also went and donwloaded the newer npm for MacOSX here, but there is strong recommendation to use a version manager... We are using Docker for the dev so I am not as concerned
+> **CLONED BY ETIENNE J FROM MEDIUM.COM ARTICLE FOR TEST & DEV... 03/21/2022
+> - Updated for [frontend-insta/](./frontend/) vs [frontend](./frontend)
 
 ____________
 
-### React application with a NodeJS backend and a MongoDB database
+### React application with a Flask backend and a MongoDB database
 
 Project structure:
 ```
@@ -99,6 +93,28 @@ Removing frontend ... done
 Removing mongo    ... done
 ```
 
+### Updating Security Dependencies in React Frontend with NPM...
+
+ - To update the dependency structure based on the **package.lock** in React [frontend](./frontend)
+
+    ```bash
+    cd ./frontend
+    npm -i --package-lock-only
+    ```
+
+- You can run `npm audit` and `npm audit fix` to automatically resolve. If you cannot, run `npm audit` which should reveal a recommended solution which could break.. 
+
+  ```bash
+  cd ./frontend
+  npm install react-scripts@5.0.0 --package-lock-only
+
+  # there are known errors, trying to resolve
+  npm install nth-check --package-lock-only
+  ```
+
+  > Using `--package-lock-only` for our `npm install` commands, given our development environment really is in the Docker container ... careful not to install locally
+  > - also went and donwloaded the newer npm for MacOSX here, but there is strong recommendation to use a version manager... We are using Docker for the dev so I am not as concerned
+___________________
 ##### Explanation of `docker-compose`
 
 __Version__
