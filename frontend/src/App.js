@@ -5,6 +5,7 @@ import Welcome from './Components/Welcome'
 import OAuth from './Components/OAuth'
 import InstaFeeds from './Components/InstaFeeds'
 import Login from './Components/Login'
+import InstagramUser from './Components/InstagramUser';
 
 import './App.css';
 
@@ -13,7 +14,7 @@ const App = () => {
     <div className="wrapper">
       <header className="App-header" style={{textAlign:'center'}}>
         <h1>CompassionMode App setup with Instagram API</h1>
-      </header>
+      </header>,
       
       <BrowserRouter>
         <Routes>
@@ -23,7 +24,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
-    </div>
+      </div>
   );
 }
 

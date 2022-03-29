@@ -1,4 +1,4 @@
-# Welcome to CompassionMode App
+# Welcome to CompassionMode App 🧘
 
 - [Yoona Kang](mailto:yoona.kang@asc.upenn.edu)
 
@@ -21,3 +21,5 @@
 ### Login for OAuth (DEV)
 
 - there is http://localhost:3000/login
+
+> React is stateful! this dev branch aims to figure stateful integration of input for username
