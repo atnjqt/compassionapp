@@ -11,8 +11,6 @@
 - For local development we use [Docker Compose](https://docs.docker.com/compose/). Clone the repo and build:
 
     ```bash
-    cd react-flask-mongodb
-
     mkdir data # for volume mounted bind
 
     docker compose up -d
