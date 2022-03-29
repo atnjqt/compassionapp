@@ -2,7 +2,7 @@
 
 - [Yoona Kang](mailto:yoona.kang@asc.upenn.edu)
 
-- [Matt O'Donnell](mailto:mbod@asc.upenn.edu)s
+- [Matt O'Donnell](mailto:mbod@asc.upenn.edu)
 
 - [Etienne Jacquot](mailto:etienne.jacquot@asc.upenn.edu)
 
@@ -19,3 +19,7 @@
     ```
 
 - access the app at [http://localhost:3000/](http://localhost:3000/)
+
+### Login for OAuth (DEV)
+
+- there is http://localhost:3000/login
