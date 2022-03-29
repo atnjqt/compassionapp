@@ -1,12 +1,15 @@
 import React from 'react'
 
-const OAuth = (props) => {
+//const enteredName = prompt('Please enter your name')
+
+const OAuth = () => {
 
     return (
-        <h3>'oauth redirect here 
-            <a href="http://localhost:3000/oauth" rel="instafeed"> localhost:3000/oauth </a>
-        </h3>
-    );
-}
-
+            <div>
+                <h3>REDIRECT FOR INSTAGRAM (META) API ALLOW
+                    <a href="https://instagram.com" rel="oauth"> instagram.com (TBD) </a> 
+                </h3>
+            </div>
+            )
+    };
 export default OAuth;
