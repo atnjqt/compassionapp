@@ -1,10 +1,6 @@
-# Welcome to CompassionMode App
+# Welcome to CompassionMode App 🧘
 
-- [Yoona Kang](mailto:yoona.kang@asc.upenn.edu)
-
-- [Matt O'Donnell](mailto:mbod@asc.upenn.edu)
-
-- [Etienne Jacquot](mailto:etienne.jacquot@asc.upenn.edu)
+- Project Authors: [Yoona Kang](mailto:yoona.kang@asc.upenn.edu), [Matt O'Donnell](mailto:mbod@asc.upenn.edu),  [Etienne Jacquot](mailto:etienne.jacquot@asc.upenn.edu)
 
 ## Getting Started
 
@@ -17,7 +13,18 @@
     ```
 
 - access the app at [http://localhost:3000/](http://localhost:3000/)
+    - For [instafeed](http://localhost:3000/instafeeed) with your tester access token as [./frontend/env](./frontend/.env)
 
-### Login for OAuth (DEV)
+### Login for Frontend (:3000 DEV)
 
 - there is http://localhost:3000/login
+
+> React is stateful! this dev branch aims to figure stateful integration of input for username
+
+### Flask API Backend (:8080 DEV)
+
+- the sample provided counts how many times the page was visited, counting & writing this in our **mongo** backend, to display at [http://localhost:8080/](http://localhost:8080/)
+
+- I also tried a sample for [http://localhost:8080/instagram/](http://localhost:8080/instagram/) which attempts to use `pymongo` for combining the backend w/ database
+
+> We will use this python backend to pass instagram allowed URLs to Azure / AWS for facial detection, to selectively display with conditional React logic only photos on a timeline that meet the compassionmode thresholds

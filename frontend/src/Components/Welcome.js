@@ -1,20 +1,35 @@
 import React from 'react'
+import InstaFeeds from './InstaFeeds';
+import Login from './Login';
 
 const Welcome = () => {
 
     return (
         <div>
-            <h3>Login for Instagram Tester Username (should be conditional on having IG short access token) 
-                <a href="http://localhost:3000/login" rel="login"> localhost:3000/login </a> 
-            </h3>,
+            <h3>🟥 🟧 🟨 🟩 🟦 🟪 ⬛️ ⬜️ 🟫</h3> 
             
-            <h3>Instafeed on React via API access token
-                <a href="http://localhost:3000/instafeed" rel="instafeed"> localhost:3000/instafeed </a>
-            </h3>,
+            <b><Login /></b>
 
-            <h3>Oauth
-                <a href="http://localhost:3000/oauth" rel="oauth"> localhost:3000/oauth </a>
-            </h3> 
+            <b>
+            - for short term access token, copy code for HTTP POST
+            <br>
+            </br>
+                - for long term access token, copy short token for HTTP GET
+            </b>
+            <hr></hr>
+
+            <div>
+                <h3>
+                    <a href="http://localhost:3000/instafeed" rel="instafeed"> localhost:3000/instafeed </a>
+                </h3>
+            </div>
+
+
+            <b>
+            🔴 🟠 🟡 🟢 🔵 🟣 ⚫️ ⚪️ 🟤 
+
+             <InstaFeeds token={process.env.REACT_APP_INS_TOKEN} limit={12}/>
+            </b>
             
         </div>);
 }
