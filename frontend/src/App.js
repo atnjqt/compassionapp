@@ -4,8 +4,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Welcome from './Components/Welcome'
 import OAuth from './Components/OAuth'
 import InstaFeeds from './Components/InstaFeeds'
-import Login from './Components/Login'
-import InstagramUser from './Components/InstagramUser';
 
 import './App.css';
 
@@ -20,8 +18,6 @@ const App = () => {
           <Route path="/" element={<Welcome />}/>
           <Route path="/oauth" element={<OAuth />} />
           <Route path="/instafeed" element={<InstaFeeds token={process.env.REACT_APP_INS_TOKEN} limit={12}/>} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/InstagramUser" element={<InstagramUser />} />
         </Routes>
       </BrowserRouter>
       </div>
