@@ -1,10 +1,6 @@
 # Welcome to CompassionMode App 🧘
 
-- [Yoona Kang](mailto:yoona.kang@asc.upenn.edu)
-
-- [Matt O'Donnell](mailto:mbod@asc.upenn.edu)
-
-- [Etienne Jacquot](mailto:etienne.jacquot@asc.upenn.edu)
+- Project Authors: [Yoona Kang](mailto:yoona.kang@asc.upenn.edu), [Matt O'Donnell](mailto:mbod@asc.upenn.edu),  [Etienne Jacquot](mailto:etienne.jacquot@asc.upenn.edu)
 
 ## Getting Started
 

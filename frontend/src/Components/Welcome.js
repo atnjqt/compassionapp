@@ -7,13 +7,14 @@ const Welcome = () => {
     return (
         <div>
             <h3>🟥 🟧 🟨 🟩 🟦 🟪 ⬛️ ⬜️ 🟫</h3> 
-            <b><Login />
-            </b>
+            
+            <b><Login /></b>
+
             <b>
             - for short term access token, copy code for HTTP POST
             <br>
             </br>
-                - for long term access token, copy short token for HTTP GET here
+                - for long term access token, copy short token for HTTP GET
             </b>
             <hr></hr>
 

@@ -11,7 +11,7 @@ const App = () => {
   return (
     <div className="wrapper">
       <header className="App-header" style={{textAlign:'center'}}>
-        <h1>CompassionMode App setup with Instagram API</h1>
+        <h1>CompassionMode App (Instagram Basic API) 🪷 🧘 🌎</h1>
       </header>
       <BrowserRouter>
         <Routes>

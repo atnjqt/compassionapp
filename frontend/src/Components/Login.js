@@ -32,6 +32,8 @@ export default class Login extends React.Component {
         Here <a href="https://www.instagram.com/oauth/authorize?client_id=386585613295040&redirect_uri=https://localhost:3000/&scope=user_profile,user_media&response_type=code" target="_blank" rel="oauth"> OAUTH </a>
         </button>
         </div>
+        <br/>
+
       </div>
     );
   }
