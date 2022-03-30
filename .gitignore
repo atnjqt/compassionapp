@@ -6,4 +6,6 @@ server/node_modules/
 .idea/
 data
 *.log
+# any local env for instagram testers
 .env.ascdev3620
+.env.ibn_atn

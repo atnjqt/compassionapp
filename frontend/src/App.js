@@ -14,14 +14,14 @@ const App = () => {
     <div className="wrapper">
       <header className="App-header" style={{textAlign:'center'}}>
         <h1>CompassionMode App setup with Instagram API</h1>
-      </header>,
-      
+      </header>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Welcome />}/>
           <Route path="/oauth" element={<OAuth />} />
           <Route path="/instafeed" element={<InstaFeeds token={process.env.REACT_APP_INS_TOKEN} limit={12}/>} />
           <Route path="/login" element={<Login />} />
+          <Route path="/InstagramUser" element={<InstagramUser />} />
         </Routes>
       </BrowserRouter>
       </div>

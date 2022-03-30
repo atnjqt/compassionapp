@@ -1,18 +1,15 @@
 import React from 'react';
 
-export default class InstagramUser extends React.Component {
+export default class Login extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = { instagram: 
-                    { username: props.userName }
-            }
+    this.state = { instagram: { username: props.userName }
     }
+  }
 
   handleFirstNameChanged(event) {
     var instagram        = this.state.instagram;
     instagram.userName  = event.target.value;
-
     this.setState({ instagram: instagram });
   }
 
@@ -33,6 +30,8 @@ export default class InstagramUser extends React.Component {
           Save Record
         </button>
         </div>
+
+        <h3> name is... {this.state.instagram.userName}</h3>
       </div>
     );
   }

@@ -17,6 +17,7 @@
     ```
 
 - access the app at [http://localhost:3000/](http://localhost:3000/)
+    - For [instafeed](http://localhost:3000/instafeeed) with your tester access token as [./frontend/env](./frontend/.env)
 
 ### Login for Frontend (:3000 DEV)
 
