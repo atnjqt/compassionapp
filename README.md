@@ -1,4 +1,4 @@
-# Welcome to CompassionMode App 🧘
+# Welcome to CompassionMode App 🪷 🧘 🌎
 
 - Project Authors: [Yoona Kang](mailto:yoona.kang@asc.upenn.edu), [Matt O'Donnell](mailto:mbod@asc.upenn.edu),  [Etienne Jacquot](mailto:etienne.jacquot@asc.upenn.edu)
 
@@ -7,19 +7,24 @@
 - For local development we use [Docker Compose](https://docs.docker.com/compose/). Clone the repo and build:
 
     ```bash
+    git clone git@github.com:atnjqt/compassionmode-app.git
+    cd compassionmode-app
+
     mkdir data # for volume mounted bind
 
-    docker compose up -d
+    docker compose up --build
     ```
 
-- access the app at [http://localhost:3000/](http://localhost:3000/)
-    - For [instafeed](http://localhost:3000/instafeeed) with your tester access token as [./frontend/env](./frontend/.env)
+- Your local environment is accessible at [http://localhost:3000/](http://localhost:3000/)
 
-### Login for Frontend (:3000 DEV)
+### Adding your access token (short or long term) to .env
+
+- For the [instafeed](http://localhost:3000/instafeed) you need to add your Tester access token as [./frontend/env](./frontend/.env) and then restart the docker app `docker compose down && docker compose up -d`
+
+
+### React Frontend (:3000 DEV)
 
 - Access the app at http://localhost:3000/
-
-> React is stateful! this dev branch aims to figure stateful integration of input for username
 
 ### Flask API Backend (:8080 DEV)
 
