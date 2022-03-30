@@ -17,7 +17,7 @@
 
 ### Login for Frontend (:3000 DEV)
 
-- there is http://localhost:3000/login
+- Access the app at http://localhost:3000/
 
 > React is stateful! this dev branch aims to figure stateful integration of input for username
 
