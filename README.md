@@ -1,4 +1,4 @@
-# Welcome to CompassionMode App 🪷 🧘 🌎
+# Welcome to CompassionApp 🪷 🧘 🌎
 
 - Project Authors: [Yoona Kang](mailto:yoona.kang@asc.upenn.edu), [Matt O'Donnell](mailto:mbod@asc.upenn.edu),  [Etienne Jacquot](mailto:etienne.jacquot@asc.upenn.edu)
 
@@ -17,6 +17,14 @@
 
 - Your local environment is accessible at [http://localhost:3000/](http://localhost:3000/)
 
+## FB Login
+
+- http://localhost:3000/ callback url... tbd
+
+
+____
+
+##
 ### Adding your access token (short or long term) to .env
 
 - For the [instafeed](http://localhost:3000/instafeed) you need to add your Tester access token as [./frontend/env](./frontend/.env) and then restart the docker app `docker compose down && docker compose up -d`

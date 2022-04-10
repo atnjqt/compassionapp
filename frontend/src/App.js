@@ -1,26 +1,60 @@
-import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
-import Welcome from './Components/Welcome'
-import OAuth from './Components/OAuth'
-import InstaFeeds from './Components/InstaFeeds'
-
+import React, { useState } from 'react';
+import FacebookLogin from 'react-facebook-login';
+import { Card, Image, Figure } from 'react-bootstrap';
 import './App.css';
 
-const App = () => {
+function App() {
+
+  const [login, setLogin] = useState(false);
+  const [data, setData] = useState({});
+  const [picture, setPicture] = useState('');
+
+  const responseFacebook = (response) => {
+    console.log(response);
+    setData(response);
+    setPicture(response.picture.data.url);
+    if (response.accessToken) {
+      setLogin(true);
+    } else {
+      setLogin(false);
+    }
+  }
+
   return (
-    <div className="wrapper">
-      <header className="App-header" style={{textAlign:'center'}}>
-        <h1>CompassionMode App (Instagram Basic API) 🪷 🧘 🌎</h1>
-      </header>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Welcome />}/>
-          <Route path="/oauth" element={<OAuth />} />
-          <Route path="/instafeed" element={<InstaFeeds token={process.env.REACT_APP_INS_TOKEN} limit={12}/>} />
-        </Routes>
-      </BrowserRouter>
-      </div>
+    <div class="container">
+      <Card style={{ width: '1000px' }}>
+        <Card.Header>
+    
+          {<div>
+           <h2><em>Welcome to CompassionMode</em></h2>
+
+          </div>
+          }
+
+          {!login &&
+            <FacebookLogin
+              appId="292301126304936"
+              autoLoad={true}
+              fields="name,email,picture"
+              scope="public_profile,user_friends"
+              callback={responseFacebook}
+              icon="fa-facebook" />
+          }
+          
+          {login &&
+          <Image src={picture} roundedCircle />
+          }
+        </Card.Header>
+        {login &&
+          <Card.Body>
+            <Card.Title>May you be well, <strong>{data.name}</strong></Card.Title>
+            <Card.Text>
+              {data.email}
+            </Card.Text>
+          </Card.Body>
+        }
+      </Card>
+    </div>
   );
 }
 

@@ -12,7 +12,7 @@
 
     ```bash
     npm install react-scripts
-    npm install react-scripts --package-lock-only
+    npm install react-scripts --package-lock-only # for docker dev
     ```
 
 - Alternatively since we are on Docker, you can manually update the dependency in [package.json](./package.json):
