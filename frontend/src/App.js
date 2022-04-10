@@ -36,7 +36,21 @@ function App() {
               appId="292301126304936"
               autoLoad={true}
               fields="name,email,picture"
-              scope="public_profile,user_friends"
+              scope="public_profile, 
+                email, 
+                user_age_range,
+                user_birthday,
+                user_friends,
+                user_gender,
+                user_hometown,
+                user_likes,
+                user_link,
+                user_location,
+                user_messenger_contact,
+                user_photos,
+                user_posts,
+                user_videos,
+                read_insights"
               callback={responseFacebook}
               icon="fa-facebook" />
           }
