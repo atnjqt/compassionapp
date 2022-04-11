@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import FacebookLogin from 'react-facebook-login';
-import { Card, Image, Figure } from 'react-bootstrap';
+import { Card, Image } from 'react-bootstrap';
 import './App.css';
 
 function App() {
@@ -10,9 +10,11 @@ function App() {
   const [picture, setPicture] = useState('');
 
   const responseFacebook = (response) => {
+    console.log(JSON.stringify(response));
     console.log(response);
     setData(response);
     setPicture(response.picture.data.url);
+
     if (response.accessToken) {
       setLogin(true);
     } else {
@@ -21,14 +23,13 @@ function App() {
   }
 
   return (
-    <div class="container">
-      <Card style={{ width: '1000px' }}>
+    <div class="container"> 
+      
+      <Card style={{ backgroundImage: "url(/compassion_bg.png)" }}>
         <Card.Header>
     
-          {<div>
-           <h2><em>Welcome to CompassionMode</em></h2>
-
-          </div>
+          {
+           <h2 class="welcome"> <em>Welcome to CompassionMode</em> </h2>
           }
 
           {!login &&
@@ -36,34 +37,23 @@ function App() {
               appId="292301126304936"
               autoLoad={true}
               fields="name,email,picture"
-              scope="public_profile, 
-                email, 
-                user_age_range,
-                user_birthday,
-                user_friends,
-                user_gender,
-                user_hometown,
-                user_likes,
-                user_link,
-                user_location,
-                user_messenger_contact,
-                user_photos,
-                user_posts,
-                user_videos,
-                read_insights"
+              scope="public_profile, email, user_friends, user_photos, user_birthday"
               callback={responseFacebook}
               icon="fa-facebook" />
           }
           
           {login &&
-          <Image src={picture} roundedCircle />
-          }
+          <div class="prof_pic">
+          <Image src={picture} width="300" roundedCircle />
+          </div>}
+
         </Card.Header>
+
         {login &&
           <Card.Body>
-            <Card.Title>May you be well, <strong>{data.name}</strong></Card.Title>
+            <Card.Title class="be_well">May you be well, <strong>{data.name}</strong></Card.Title>
             <Card.Text>
-              {data.email}
+              email is: {data.email}...
             </Card.Text>
           </Card.Body>
         }

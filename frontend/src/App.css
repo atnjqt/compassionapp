@@ -1,3 +1,16 @@
 .App {
   text-align: center;
 }
+h2.welcome {
+  text-align: center;
+}
+div.prof_pic {
+  text-align: center;
+  width: "300px"
+}
+.rounded-circle {
+  border-radius: 50%!important;
+  }
+.be_well {
+  text-align: center;
+}
