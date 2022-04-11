@@ -7,37 +7,35 @@
 - For local development we use [Docker Compose](https://docs.docker.com/compose/). Clone the repo and build:
 
     ```bash
-    git clone git@github.com:atnjqt/compassionmode-app.git
-    cd compassionmode-app
+    git clone git@github.com:yoonakang/compassionapp.git
+    cd compassionapp
 
     mkdir data # for volume mounted bind
 
     docker compose up --build
     ```
 
-- Your local environment is accessible at [http://localhost:3000/](http://localhost:3000/)
+- Your local environment is accessible at:
+    - frontend [http://localhost:3000/](http://localhost:3000/)
+    - backend [http://localhost:8080/](http://localhost:8080/)
+________
 
-## FB Login
+## React Frontend (:3000 DEV)
 
-- http://localhost:3000/ callback url... tbd
+### FaceBook Login for CompassionApp
 
+> For `appID='292301126304936'` our Meta Developer application [https://developers.facebook.com/apps/292301126304936/](https://developers.facebook.com/apps/292301126304936/)
+
+- Navigate to https://localhost:3000/ (no SSL yet), login with the pre-configured **Compassion FB Tester - compassion_mdpcgci_tester@tfbnw.net** (as Etienne for pw) for basic oauth integration
 
 ____
 
-##
-### Adding your access token (short or long term) to .env
+## Flask API Backend (:8080 DEV)
 
-- For the [instafeed](http://localhost:3000/instafeed) you need to add your Tester access token as [./frontend/env](./frontend/.env) and then restart the docker app `docker compose down && docker compose up -d`
-
-
-### React Frontend (:3000 DEV)
-
-- Access the app at http://localhost:3000/
-
-### Flask API Backend (:8080 DEV)
+### Sample page visit counter app
 
 - the sample provided counts how many times the page was visited, counting & writing this in our **mongo** backend, to display at [http://localhost:8080/](http://localhost:8080/)
 
-- I also tried a sample for [http://localhost:8080/instagram/](http://localhost:8080/instagram/) which attempts to use `pymongo` for combining the backend w/ database
+    - TBD for examples using `pymongo` for combining the backend w/ database
 
-> We will use this python backend to pass instagram allowed URLs to Azure / AWS for facial detection, to selectively display with conditional React logic only photos on a timeline that meet the compassionmode thresholds
+    > We will use this python backend to pass instagram allowed URLs to Azure / AWS for facial detection, to selectively display with conditional React logic only photos on a timeline that meet the compassionmode thresholds
