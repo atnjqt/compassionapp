@@ -37,6 +37,7 @@ const FacebookFriends = ({token, ...props}) => {
     }, [props.limit])
 
     return (
+        // for each friend, displays using the Feeds Component
         <div className="container">
             {feeds.map((feed) => (
                 <Feed key={feed.id} feed={feed} />

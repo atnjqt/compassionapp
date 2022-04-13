@@ -104,25 +104,16 @@ function App() {
         <br></br>- <a href={"https://graph.facebook.com/101696215855611/picture?type=large&width=250&height=250&redirect=0&access_token=" + accessToken} target="_blank">here for <code>101696215855611</code></a>
         </blockquote>
 
-        
-        <div class="prof_pic">
-         <Image src="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=105573932130257&height=250&width=250&ext=1652419622&hash=AeTlMkbVO6ZyEt1vs_8" 
-         roundedCircle />
+        <div>
+        <FacebookFriends token={accessToken}/>
         </div>
-        <div class="prof_pic">
-         <Image src="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=101696215855611&height=250&width=250&ext=1652419636&hash=AeSwOv1FIFLzvoRv8O8" 
-         roundedCircle />
-        </div>
+
 
         <h3>Your posts (fb testers) -- TBD..</h3>
 
         or you can try the following: <a href={"https://graph.facebook.com/me/posts?access_token=" + accessToken} target="_blank">here</a>
 
         </div>
-      }
-
-      {login && 
-      <FacebookFriends token={accessToken}/>
       }
   
      </Card>
