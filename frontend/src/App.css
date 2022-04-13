@@ -4,6 +4,9 @@
 h2.welcome {
   text-align: center;
 }
+h3.welcome {
+  text-align: center;
+}
 div.prof_pic {
   text-align: center;
   width: "300px"
@@ -13,4 +16,7 @@ div.prof_pic {
   }
 .be_well {
   text-align: center;
+}
+div.word_wrap {
+  word-wrap: break-word;
 }
