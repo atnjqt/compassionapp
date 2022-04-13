@@ -3,6 +3,8 @@ import FacebookLogin from 'react-facebook-login';
 import { Card, Image } from 'react-bootstrap';
 import './App.css';
 
+import FacebookFriends from './Components/FacebookFriends'
+
 function App() {
 
   const [login, setLogin] = useState(false);
@@ -91,7 +93,7 @@ function App() {
         
         <div class="prof_pic">
          <Image src="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=101566925868109&height=720&width=720&ext=1652417519&hash=AeRwhh0r9sOoTIeGiwE" roundedCircle />
-        </div>}
+        </div>
 
         <h3 class="welcome"> <strong>2. MAY YOUR FB TESTER FRIENDS BE WELL🪷 🧘 🌎</strong> </h3>
 
@@ -116,8 +118,11 @@ function App() {
 
         or you can try the following: <a href={"https://graph.facebook.com/me/posts?access_token=" + accessToken} target="_blank">here</a>
 
-        
         </div>
+      }
+
+      {login && 
+      <FacebookFriends token={accessToken}/>
       }
   
      </Card>
