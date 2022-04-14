@@ -1,4 +1,4 @@
-# Welcome to CompassionApp 🪷 🧘 🌎
+# Welcome to CompassionApp 🧘 🌎 🪷
 
 - Project Authors: [Yoona Kang](mailto:yoona.kang@asc.upenn.edu), [Matt O'Donnell](mailto:mbod@asc.upenn.edu),  [Etienne Jacquot](mailto:etienne.jacquot@asc.upenn.edu)
 
@@ -26,7 +26,7 @@ ________
 
 > For `appID='292301126304936'` our Meta Developer application [https://developers.facebook.com/apps/292301126304936/](https://developers.facebook.com/apps/292301126304936/)
 
-- Navigate to https://localhost:3000/ (no SSL yet), login with the pre-configured **Compassion FB Tester - compassion_mdpcgci_tester@tfbnw.net** (as Etienne for pw) for basic oauth integration
+- Navigate to https://localhost:3000/ (no SSL yet, will eventually be https://compassionmode.asc.upenn.edu), login with the pre-configured **FB Tester Account Email** for basic login & oauth integration example.
 
 ____
 
