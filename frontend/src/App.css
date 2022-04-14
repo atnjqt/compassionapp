@@ -1,3 +1,19 @@
 .App {
   text-align: center;
 }
+.welcome {
+  text-align: center;
+}
+div.prof_pic {
+  text-align: center;
+  width: "300px";
+}
+.rounded-circle {
+  border-radius: 50%!important;
+  }
+.login_title {
+  text-align: center;
+}
+div.word_wrap {
+  word-wrap: break-word;
+}
