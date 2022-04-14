@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 
-import Picture from './Picture'
+//import Feed from './Feed'
+import FacebookPhotos from './FacebookPhotos'
 
 import './FacebookFriends.css'
 
-const FacebookFriends = ({user_id, name, width, height,  token, ...props}) => {
-    const [pics, setPicsData] = useState([]);
-
+const FacebookGetPhotos = ({token, ...props}) => {
+    const [getphotos, setGetPhotosData] = useState([]);
     //use useRef to store the latest value of the prop without firing the effect
     const tokenProp = useRef(token);
     tokenProp.current = token;
@@ -16,12 +16,14 @@ const FacebookFriends = ({user_id, name, width, height,  token, ...props}) => {
         // this is to avoid memory leaks
         const abortController = new AbortController();
 
-        async function fetchFacebookPicture () {
+        async function fetchFacebookGetPhotos () {
           try{
             axios
-                .get(`https://graph.facebook.com/${user_id}/picture?type=large&width=${width}&height=${height}&redirect=0&access_token=${tokenProp.current}`)
+                .get(`https://graph.facebook.com/me/photos/uploaded?access_token=${tokenProp.current}`)
                 .then((resp) => {
-                    setPicsData(resp.data.data)
+                    console.log('TESTING to get photo IDs...')
+                    console.log(resp.data.data)
+                    setGetPhotosData(resp.data.data)
                 })
           } catch (err) {
               console.log('error', err)
@@ -29,7 +31,7 @@ const FacebookFriends = ({user_id, name, width, height,  token, ...props}) => {
         }
 
         // manually call the fecth function 
-        fetchFacebookPicture();
+        fetchFacebookGetPhotos();
   
         return () => {
             // cancel pending fetch request on component unmount
@@ -38,11 +40,13 @@ const FacebookFriends = ({user_id, name, width, height,  token, ...props}) => {
     }, [props.limit])
 
     return (
-        // display profile picture using the Picture Component
+        // for each friend, displays using the FacebookPicture Component
         <div className="container">
-            <Picture key={pics.id} name={name} user_id={user_id} feed={pics} />
+            {getphotos.map((feed) => (
+                <FacebookPhotos photo_id={feed.id} token={token}/>
+            ))}
         </div>
     );
 }
 
-export default FacebookFriends;
+export default FacebookGetPhotos;

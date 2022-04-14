@@ -21,7 +21,7 @@ const FacebookFriends = ({token, ...props}) => {
             axios
                 .get(`https://graph.facebook.com/me/friends?access_token=${tokenProp.current}`)
                 .then((resp) => {
-                    console.log('TESTING')
+                    console.log('TESTING to get friend IDs')
                     console.log(resp.data.data)
                     setFeedsData(resp.data.data)
                 })

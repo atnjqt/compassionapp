@@ -17,3 +17,7 @@ div.prof_pic {
 div.word_wrap {
   word-wrap: break-word;
 }
+.login_button {
+  text-align: center;
+  padding: 70px 0;
+}

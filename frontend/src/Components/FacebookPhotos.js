@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 
-import Picture from './Picture'
+import Photos from './Photos'
 
-import './FacebookFriends.css'
+//import './FacebookFriends.css'
 
-const FacebookFriends = ({user_id, name, width, height,  token, ...props}) => {
-    const [pics, setPicsData] = useState([]);
+const FacebookPhotosSrc = ({photo_id, token, ...props}) => {
+    const [photos, setPhotosData] = useState([]);
 
     //use useRef to store the latest value of the prop without firing the effect
     const tokenProp = useRef(token);
@@ -19,9 +19,12 @@ const FacebookFriends = ({user_id, name, width, height,  token, ...props}) => {
         async function fetchFacebookPicture () {
           try{
             axios
-                .get(`https://graph.facebook.com/${user_id}/picture?type=large&width=${width}&height=${height}&redirect=0&access_token=${tokenProp.current}`)
+                .get(`https://graph.facebook.com/${photo_id}/?access_token=${token}&fields=webp_images`)
                 .then((resp) => {
-                    setPicsData(resp.data.data)
+                    console.log('TESTING FOR PHOTOS DISPLAY')
+                    console.log(resp.data)
+                    // take only first of the various different image sizes turned
+                    setPhotosData(resp.data.webp_images[0])
                 })
           } catch (err) {
               console.log('error', err)
@@ -40,9 +43,9 @@ const FacebookFriends = ({user_id, name, width, height,  token, ...props}) => {
     return (
         // display profile picture using the Picture Component
         <div className="container">
-            <Picture key={pics.id} name={name} user_id={user_id} feed={pics} />
+            <Photos feed={photos} />
         </div>
     );
 }
 
-export default FacebookFriends;
+export default FacebookPhotosSrc;

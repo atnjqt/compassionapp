@@ -6,7 +6,7 @@ import './App.css';
 import FacebookPicture from './Components/FacebookPicture'
 //import FacebookFriends from './Components/FacebookFriends'
 import FacebookFriendsPicture from './Components/FacebookFriendsPicture'
-
+import FacebookGetPhotos from './Components/FacebookGetPhotos'
 
 function App() {
 
@@ -32,21 +32,23 @@ function App() {
   return (
     <div class="container"> 
       
-      <Card style={{ backgroundImage: "url(/compassion_bg.png)" }}>
+      <Card style={{ backgroundImage: "url('')" }}>
 
         <Card.Header>
           
-          <h1 class="welcome"> <strong>Welcome to CompassionApp 🧘 🌎 🪷</strong> </h1>
+          <h1 class="welcome"> <strong>Welcome to CompassionApp 🧘 🌎 🧠</strong> </h1>
           <hr></hr>
 
           {!login &&
-            <FacebookLogin
-              appId="292301126304936"
-              autoLoad={true}
-              fields="name,email,picture"
-              scope="public_profile, email, user_friends, user_photos, user_birthday"
-              callback={responseFacebook}
-              icon="fa-facebook" />
+            <div class='login_button'>
+              <FacebookLogin
+                appId="292301126304936"
+                autoLoad={true}
+                fields="name,email,picture"
+                scope="public_profile, email, user_friends, user_photos, user_birthday"
+                callback={responseFacebook}
+                icon="fa-facebook" />
+            </div>
           }
 
         </Card.Header>
@@ -73,9 +75,15 @@ function App() {
                 </div>
                 <hr></hr>
                 
-                <h2 class="welcome"> <em>3. Detecting Faces in Your Facebook Posts -- TBD...</em></h2>
-                Click <a href={"https://graph.facebook.com/me/posts?access_token=" + accessToken} target="_blank">here</a>
+                <h2 class="welcome"> <em>3. Your Facebook Photos Posts -- TBD for detecting faces...</em></h2>
+                Click <a href={"https://graph.facebook.com/me/photos/uploaded?access_token=" + accessToken} target="_blank">here</a>
+                <div>
+                  <FacebookGetPhotos token={accessToken}/>
+                </div>
+                <hr></hr>
+              
               </div>
+
 
             </Card.Text>
 
