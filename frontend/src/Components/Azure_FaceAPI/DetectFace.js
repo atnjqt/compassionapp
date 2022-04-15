@@ -1,27 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react'
-import axios from 'axios'
 
-import Photos from './Photos'
-
-//import './FacebookFriends.css'
-
-// THIS SHOULD BE ON THE BACKEND?
-var msRest = require("@azure/ms-rest-js");
-var Face = require("@azure/cognitiveservices-face");
-
-const FileSet = require('file-set');
-const createReadStream = require('fs').createReadStream
-const uuidV4 = require('uuid/v4');
+import Face from '@azure/cognitiveservices-face'
+import msRest from '@azure/ms-rest-js'
 
 /**
  * Shared variables
  * These variables are shared by more than one example below.
+ * will receive a facebook user photo feed tbd...
  */
 
 // An image with only one face
 let singleFaceImageUrl = 'https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg';
 // An image with several faces
 let groupImageUrl = 'http://www.historyplace.com/kennedy/president-family-portrait-closeup.jpg';
+
 const IMAGE_BASE_URL = 'https://csdx.blob.core.windows.net/resources/Face/Images/'
 // Person Group ID must be lower case, alphanumeric, with '-' and/or '_'.
 const PERSON_GROUP_ID = 'my-unique-person-group'
@@ -35,15 +27,17 @@ let key = 'PASTE_YOUR_FACE_SUBSCRIPTION_KEY_HERE';
 let endpoint = 'PASTE_YOUR_FACE_ENDPOINT_HERE';
 
 let credentials = new msRest.ApiKeyCredentials({ inHeader: { 'Ocp-Apim-Subscription-Key': key } });
-let client = new Face.FaceClient(credentials, endpoint);
+let client = new Face.FaceClient(endpoint,credentials);
 /**
  * END - AUTHENTICATE
  */
 
 /**
- * 
- * @param {*} param0 
- * @returns 
+ * AzureGetFaces
+ * @param {string} source - url from Facebook API
+ * @param {string} token - accessToken
+ * @param {...props} props - properties in React
+ * @returns faceresults & groupresults states updated
  */
 
 const AzureGetFaces = ({source, token, ...props}) => {
@@ -79,6 +73,7 @@ const AzureGetFaces = ({source, token, ...props}) => {
                     throw err
                 })
             console.log()
+            singleDetectedFace();
         
             // Detect the faces in a group image. API call returns a Promise<DetectedFace[]>.
             let groupDetectedFaces = await client.face.detectWithUrl(groupImageUrl)
@@ -100,11 +95,12 @@ const AzureGetFaces = ({source, token, ...props}) => {
                     throw err
                 })
             console.log()
+            groupDetectedFaces();
             /**
              * END - DETECT FACES
             */}
 
-            fetchFaceAPI();
+        fetchFaceAPI();
   
         return () => {
             // cancel pending fetch request on component unmount
