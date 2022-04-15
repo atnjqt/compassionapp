@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@azure/cognitiveservices-face": "^5.0.0",
+    "@azure/ms-rest-js": "^2.6.1",
     "@testing-library/jest-dom": "^5.11.9",
     "axios": "^0.21.1",
     "react": "^17.0.1",
