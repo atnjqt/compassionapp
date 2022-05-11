@@ -14,6 +14,13 @@ def root():
 	message = 'This page has been visited {} times.'.format(db.hits.count_documents({}))
 	return jsonify({ 'message': message })
 
+@app.route('/get_faces', methods=['GET'])
+@cross_origin()
+def get_faces():
+    source_url = request.args.get('source')
+    message = 'Think about Azure in Python instead of React! see: {}'.format(source_url)
+    return jsonify({ 'message': message })
+
 # Add your backend API functions here... such as, add an Instagram username, access token, later add photos, etc...
 @app.route('/instagram/', methods=['GET','POST'])
 @cross_origin()

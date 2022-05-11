@@ -7,6 +7,7 @@ import FacebookPicture from './Components/FacebookPicture'
 //import FacebookFriends from './Components/FacebookFriends'
 import FacebookFriendsPicture from './Components/FacebookFriendsPicture'
 import FacebookGetPhotos from './Components/FacebookGetPhotos'
+import GetFaces from './Components/Azure_FaceAPI/GetFaces'
 
 function App() {
 
@@ -32,7 +33,7 @@ function App() {
   return (
     <div class="container"> 
       
-      <Card style={{ backgroundImage: "url('')" }}>
+      <Card style={{ backgroundImage: "url('compassion_bg.png')" }}>
 
         <Card.Header>
           
@@ -75,10 +76,15 @@ function App() {
                 </div>
                 <hr></hr>
                 
-                <h2 class="welcome"> <em>3. Your Facebook Photos Posts -- TBD for detecting faces...</em></h2>
+                <h2 class="welcome"> <em>3. Your CompassionApp Friends Tagged Photos of You (TBD for detecting faces)</em></h2>
                 Click <a href={"https://graph.facebook.com/me/photos/uploaded?access_token=" + accessToken} target="_blank">here</a>
                 <div>
                   <FacebookGetPhotos token={accessToken}/>
+                </div>
+                <hr></hr>
+                <h2 class="welcome"> <em>4. demo for backend connect</em></h2>
+                <div>
+                <GetFaces />
                 </div>
                 <hr></hr>
               

@@ -23,9 +23,8 @@ const PERSON_GROUP_ID = 'my-unique-person-group'
 * Used for all examples.
 */
 
-let key = 'PASTE_YOUR_FACE_SUBSCRIPTION_KEY_HERE';
-let endpoint = 'PASTE_YOUR_FACE_ENDPOINT_HERE';
-
+let key = process.env.COGNITIVE_SERVICE_KEY;
+let endpoint = process.env.COGNITIVE_SERVICE_ENDPOINT;
 let credentials = new msRest.ApiKeyCredentials({ inHeader: { 'Ocp-Apim-Subscription-Key': key } });
 let client = new Face.FaceClient(endpoint,credentials);
 /**
