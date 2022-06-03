@@ -16,14 +16,14 @@ function App() {
   //const [picture, setPicture] = useState('');
   const [accessToken, setAccessToken] = useState();
 
-  const responseFacebook = (response) => {
-    console.log('LOGIN API RESPONSE HERE (TEST & DEV)...')
+  function responseFacebook(response) {
+    console.log('LOGIN API RESPONSE HERE (TEST & DEV)...');
     console.log(response);
     setData(response);
     //setPicture(response.picture.data.url);
 
     if (response.accessToken) {
-      setAccessToken(response.accessToken)
+      setAccessToken(response.accessToken);
       setLogin(true);
     } else {
       setLogin(false);
@@ -65,13 +65,16 @@ function App() {
               <div>
                   
                 <h2 class="welcome"> <strong><em>1. May you be well... </em> 😌</strong> </h2>
+
                 <div>
                   <FacebookPicture user_id={'me'} width={'320'} height={'320'} token={accessToken}/>
                 </div> 
+
                 <hr></hr>
 
                 <h2 class="welcome"> <strong><em>2. May your FB Tester Friends be well...</em> 👩‍💻</strong> </h2>
                 <div>
+                  okay here is your access token {accessToken}
                   <FacebookFriendsPicture token={accessToken}/>
                 </div>
                 <hr></hr>

@@ -19,10 +19,10 @@ const FacebookGetPhotos = ({token, ...props}) => {
         async function fetchFacebookGetPhotos () {
           try{
             axios
-                .get(`https://graph.facebook.com/me/photos/?access_token=${tokenProp.current}`)
+                .get(`https://graph.facebook.com/me/photos/?fields=images&type=uploaded&access_token=${tokenProp.current}`)
                 .then((resp) => {
                     console.log('TESTING to get photo IDs...')
-                    console.log(resp.data.data)
+                    console.log(resp)
                     setGetPhotosData(resp.data.data)
                 })
           } catch (err) {
